@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui/button";
-
+import { ModeToggle } from "@/components/mode-toggle";
+import { UserButton } from "@clerk/nextjs/app-beta";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-4 p-24">
-  <h1>Hello sir</h1>
-  <Button>Hello Discord-Clone</Button>
+    <main className="px-2">
+
+  <UserButton afterSignOutUrl="/"/>
+ <ModeToggle />
     </main>
   );
 }
