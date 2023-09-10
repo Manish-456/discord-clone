@@ -63,7 +63,6 @@ export function EditServerModal() {
       router.refresh();
       onClose();
     } catch (error) {
-      console.error(error);
     }
   }
 

@@ -58,7 +58,6 @@ export function InitialModal() {
       router.refresh();
       window.location.reload();
     } catch (error) {
-      console.error(error);
     }
   }
 

@@ -46,7 +46,7 @@ export default function FileUpload({endPoint, value, onChange} : IFileUpload) {
         onChange(res?.[0].url)
         }}
         onUploadError={(error: Error) => {
-            console.error(error);
+            ;
         }}
       />
     </div>

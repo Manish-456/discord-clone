@@ -62,7 +62,7 @@ export function MembersModal() {
       router.refresh();
       onOpen("members", { server: response.data });
     } catch (error) {
-      console.error(error);
+      ;
     } finally {
       setLoadingId("");
     }
@@ -81,7 +81,7 @@ export function MembersModal() {
       router.refresh();
       onOpen("members", { server: response.data });
     } catch (error) {
-      console.error(error);
+      ;
     } finally {
       setLoadingId("");
     }

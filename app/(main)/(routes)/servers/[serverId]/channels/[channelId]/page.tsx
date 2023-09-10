@@ -6,6 +6,8 @@ import { redirect } from "next/navigation";
 import ChatHeader from "@/components/chats/chat-header";
 import ChatInput from "@/components/chats/chat-input";
 import ChatMessages from "@/components/chats/chat-messages";
+import { ChannelType } from "@prisma/client";
+import MediaRoom from "@/components/media-room";
 
 interface IChannelProps {
   params: {
@@ -32,28 +34,49 @@ export default async function ChannelIdPage({ params }: IChannelProps) {
 
   if (!channel) return redirect("/");
 
-  return <div className="bg-white dark:bg-[#313338] flex flex-col min-h-screen">
-   <ChatHeader serverId={params.serverId} type="channel" name={channel.name} imageUrl={""}/>
-    <ChatMessages
-    name={channel.name}
-    member={member!}
-    chatId={channel.id}
-    apiUrl="/api/messages"
-    socketUrl={"/api/socket/messages"}
-    socketQuery={{
-      channelId : channel.id,
-      serverId : channel.serverId
-    }}
-    paramKey="channelId"
-    paramValue={channel.id}
-    type="channel"
-    />
+  return (
+    <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
+      <ChatHeader
+        serverId={params.serverId}
+        type="channel"
+        name={channel.name}
+        imageUrl={""}
+      />
+      {channel.type === ChannelType.TEXT && (
+        <>
+          <ChatMessages
+            name={channel.name}
+            member={member!}
+            chatId={channel.id}
+            apiUrl="/api/messages"
+            socketUrl={"/api/socket/messages"}
+            socketQuery={{
+              channelId: channel.id,
+              serverId: channel.serverId,
+            }}
+            paramKey="channelId"
+            paramValue={channel.id}
+            type="channel"
+          />
 
-   <ChatInput  name={channel.name} apiUrl={"/api/socket/messages"} query={{
-    channelId : channel.id,
-    serverId : channel.serverId,
-  }}
-  type={"channel"}
-   />
-  </div>;
+          <ChatInput
+            name={channel.name}
+            apiUrl={"/api/socket/messages"}
+            query={{
+              channelId: channel.id,
+              serverId: channel.serverId,
+            }}
+            type={"channel"}
+          />
+        </>
+      )}
+
+      {channel.type === ChannelType.AUDIO && (
+        <MediaRoom video={false} audio={true} chatId={channel.id} />
+      )}
+      {channel.type === ChannelType.VIDEO && (
+        <MediaRoom video={true} audio={true} chatId={channel.id} />
+      )}
+    </div>
+  );
 }

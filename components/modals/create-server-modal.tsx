@@ -62,7 +62,7 @@ export function CreateServerModal() {
       router.refresh(); // Refresh the router to update the page.
       onClose(); // Close the modal
     } catch (error) {
-      console.error(error);
+      ;
     }
   }
 

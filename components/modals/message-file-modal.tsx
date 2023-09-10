@@ -62,7 +62,7 @@ export function MessageFileModal() {
       router.refresh();
       handleClose();
     } catch (error) {
-      console.error(error);
+      ;
     }
   }
 

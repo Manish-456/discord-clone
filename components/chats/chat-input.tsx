@@ -52,7 +52,7 @@ export default function ChatInput({
       form.reset();
       router.refresh()
     } catch (error) {
-      console.error(error);
+      ;
     }
  
   }
