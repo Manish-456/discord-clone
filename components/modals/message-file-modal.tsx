@@ -76,11 +76,10 @@ export function MessageFileModal() {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="font-bold text-2xl text-center">
-            Customize your server.
+            Add an attachment.
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Give your server a personality with a name and an image. You can
-            always change it later.
+            Send a file as a message.
           </DialogDescription>
         </DialogHeader>
         <div>
