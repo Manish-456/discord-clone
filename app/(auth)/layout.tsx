@@ -17,9 +17,8 @@ export default function AuthLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={cn(`min-h-screen flex items-center justify-center`, font.className)}>
-        {children}</body>
-    </html>
-  )
+   <div className="min-h-screen flex items-center justify-center">
+    {children}
+   </div>
+    )
 }
